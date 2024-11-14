@@ -1,0 +1,4 @@
+data/*
+vndata/*
+__pycache__
+*.npy
