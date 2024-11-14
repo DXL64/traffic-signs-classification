@@ -6,5 +6,5 @@ tensorflow
 streamlit
 pillow
 argparse
-opencv-python
+opencv-python-headless
 iterative-stratification
