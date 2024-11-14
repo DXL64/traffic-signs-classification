@@ -57,7 +57,7 @@ def run(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Model Training for Traffic Sign Recognition")
     parser.add_argument('--data_dir', type=str, default='data', help='Directory of the data')
-    parser.add_argument('--model_dir', type=str, default='models', help='Directory to save models')
+    parser.add_argument('--model_dir', type=str, default='models/vn', help='Directory to save models')
     parser.add_argument('--output_dir', type=str, default='outputs', help='Directory for outputs')
     parser.add_argument('--epochs', type=int, default=20, help='Number of epochs for training')
     parser.add_argument('--batch_size', type=int, default=64, help='Batch size for training')

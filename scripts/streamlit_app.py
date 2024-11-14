@@ -75,6 +75,6 @@ def run(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Streamlit App for Traffic Sign Recognition")
-    parser.add_argument('--model_path', type=str, default='locdx', help='Path of the trained model')
+    parser.add_argument('--model_path', type=str, default='models/vn', help='Path of the trained model')
     args = parser.parse_args()
     run(args)

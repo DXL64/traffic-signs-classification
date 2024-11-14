@@ -44,7 +44,7 @@ def run(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Model Inference for Traffic Sign Recognition")
-    parser.add_argument('--model_dir', type=str, default='models', help='Directory to save models')
+    parser.add_argument('--model_dir', type=str, default='models/vn', help='Directory to save models')
     parser.add_argument('--image_path', type=str, required=True, help='Path of the image to predict')
     args = parser.parse_args()
     run(args)
