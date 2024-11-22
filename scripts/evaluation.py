@@ -6,7 +6,7 @@ import argparse
 
 def run(args):
     data_dir = args.data_dir
-    model_dir = args.model_dir
+    model_dir = f"models/{args.model_name}"
     output_dir = args.output_dir
     os.makedirs(output_dir, exist_ok=True)
     
@@ -60,7 +60,7 @@ def run(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Model Evaluation for Traffic Sign Recognition")
     parser.add_argument('--data_dir', type=str, default='data', help='Directory of the data')
-    parser.add_argument('--model_dir', type=str, default='models/vn', help='Directory to save models')
+    parser.add_argument('--model_name', type=str, default='vn', help='Directory to save models')
     parser.add_argument('--output_dir', type=str, default='outputs', help='Directory for outputs')
     args = parser.parse_args()
     run(args)

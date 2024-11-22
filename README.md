@@ -79,7 +79,7 @@ To preprocess the dataset:
 ### Exploratory Data Analysis (EDA)
 To generate visualizations and understand the dataset:
 ```
-python main.py --eda --data_dir data --output_dir outputs
+python scripts/eda.py --data_dir data --output_dir outputs
 
 ```
 
@@ -87,28 +87,35 @@ python main.py --eda --data_dir data --output_dir outputs
 To train the CNN model on the preprocessed data:
 
 ```
-python main.py --training --data_dir data --model_dir models/locdx --epochs 20 --batch_size 64 --learning_rate 0.001
+python scripts/model_training.py --data_dir data --model_dir models/germany --epochs 20 --batch_size 64 --learning_rate 0.001
 ```
 
 ### Model Evaluation
 To evaluate the trained model:
 ```
-python main.py --evaluation --data_dir data --model_dir models/locdx --output_dir outputs
+python scripts/evaluation.py --data_dir data --model_dir models/germany --output_dir outputs
 ```
 
 ### Inference
 To make predictions on new images:
 
 ```
-python main.py --inference --model_dir models/locdx --image_path path/to/image.jpg
+python scripts/inference.py --model_name germany --image_path path/to/image.jpg
 
+```
+
+### Video Inference
+To make predictions on a video:
+
+```
+python scripts/video.py --model_name germany --source path/to/video.mp4
 ```
 
 ### Streamlit Application
 To launch the Streamlit application for interactive traffic sign recognition:
 
 ```
-streamlit run scripts/streamlit_app.py -- --model_path models/locdx
+streamlit run scripts/streamlit_app.py -- --model_name germany
 ```
 
 

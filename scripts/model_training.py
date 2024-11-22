@@ -40,7 +40,7 @@ def run(args):
     model.add(Flatten())
     model.add(Dense(256, activation='relu'))
     model.add(Dropout(rate=0.5))
-    model.add(Dense(121, activation='softmax'))
+    model.add(Dense(43, activation='softmax'))
 
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
     

@@ -19,17 +19,18 @@ def load_image_from_url(url):
         return None
 
 def run(args):
-    model_path = args.model_path
+    model_dir = f"models/{args.model_name}"
+    model_path = os.path.join(model_dir, 'best_model.h5')
     
     print("----------- Starting Streamlit App -----------")
     st.title("Traffic Sign Recognition App")
     
     # Load the model
     print(f"Loading model from {model_path}...")
-    model = tf.keras.models.load_model(f'{model_path}/best_model.h5')
+    model = tf.keras.models.load_model(model_path)
     
     list_labels = []
-    with open(f'{model_path}/labels.txt', 'r') as f:
+    with open(os.path.join(model_dir, 'labels.txt'), 'r') as f:
         for line in f:
             list_labels.append(line)
 
@@ -46,7 +47,7 @@ def run(args):
             image_tmp = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
             if image_tmp is not None:
                 image = cv2.resize(image_tmp, (30, 30), interpolation=cv2.INTER_NEAREST)
-                st.image(cv2.cvtColor(image_tmp, cv2.COLOR_BGR2RGB), caption='Uploaded Image', use_column_width=True)
+                st.image(cv2.cvtColor(image_tmp, cv2.COLOR_BGR2RGB), caption='Uploaded Image', use_container_width=True)
     
     elif option == 'Enter Image URL':
         image_url = st.text_input("Enter the image URL here:")
@@ -54,7 +55,7 @@ def run(args):
             image_tmp = load_image_from_url(image_url)
             if image_tmp is not None:
                 image = cv2.resize(image_tmp, (30, 30), interpolation=cv2.INTER_NEAREST)
-                st.image(cv2.cvtColor(image_tmp, cv2.COLOR_BGR2RGB), caption='Image from URL', use_column_width=True)
+                st.image(cv2.cvtColor(image_tmp, cv2.COLOR_BGR2RGB), caption='Image from URL', use_container_width=True)
     
     # Predict if an image was loaded
     if image is not None:
@@ -75,6 +76,6 @@ def run(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Streamlit App for Traffic Sign Recognition")
-    parser.add_argument('--model_path', type=str, default='models/vn', help='Path of the trained model')
+    parser.add_argument('--model_name', type=str, default='vn', help='Path of the trained model')
     args = parser.parse_args()
     run(args)
